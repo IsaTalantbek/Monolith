@@ -1,0 +1,36 @@
+{
+    "project_name": "monolith",
+    "db": {
+        "db_name": "monolith_db",
+        "db_user": "user",
+        "db_password": "123456",
+        "db_dbname": "mydb"
+    },
+    "docker": {
+        "docker-dir": "docker",
+        "development": {
+            "composition": "docker-compose.dev.yml",
+            "dockerfile": "dockerfile.dev",
+            "env_file": ".env.development"
+        },
+        "production": {
+            "composition": "docker-compose.prod.yml",
+            "dockerfile": "dockerfile.prod",
+            "env_file": ".env.production"
+        }
+    },
+    "ports": {
+        "app": {
+            "port": "3000",
+            "variable": "monolith_PORT_PJ"
+        },
+        "db": {
+            "port": "5432",
+            "variable": "monolith_db_PORT_DB"
+        },
+        "grpc_command": {
+            "port": "50052",
+            "variable": "command_PORT_GRPC"
+        }
+    }
+}

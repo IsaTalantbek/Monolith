@@ -1,0 +1,34 @@
+services:
+    monolith:
+        volumes:
+            - ../package.json:/package.json
+            - ../src:/app/src
+        build:
+            context: ..
+            dockerfile: ${DOCKER_DIR}/${DEV_DOCKERFILE}
+        container_name: monolith
+        command: ${DEV_COMPOSE_COMMAND}
+        env_file:
+            - ../${DEV_ENV_FILE}
+        environment:
+            - NODE_ENV=development # Указываем переменную окружения для использования нужного .env
+        ports:
+            - '${monolith_PORT_PJ}:${monolith_PORT_PJ}'
+        depends_on:
+            - monolith_db
+        restart: no
+    monolith_db:
+        image: postgres:16
+        container_name: monolith_db
+        ports:
+            - '${monolith_db_PORT_DB}:5432'
+        environment:
+            - POSTGRES_USER=${monolith_db_USER_DB}
+            - POSTGRES_PASSWORD=${monolith_db_PASSWORD_DB}
+            - POSTGRES_DB=${monolith_db_DBNAME_DB}
+        volumes:
+            - monolith_db_pgdata:/var/lib/postgresql/data
+        restart: no
+
+volumes:
+    monolith_db_pgdata:

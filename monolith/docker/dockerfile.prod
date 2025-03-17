@@ -1,0 +1,34 @@
+# 1. Используем официальный образ Node.js
+FROM node:22 AS builder
+
+# 2. Устанавливаем рабочую директорию в контейнере
+WORKDIR /app
+
+# 3. Копируем файлы package.json и package-lock.json
+COPY package*.json ./
+COPY .npmrc ./
+
+# 4. Устанавливаем зависимости
+RUN npm ci
+
+# 5. Копируем весь исходный код в контейнер
+COPY . .
+
+# 6. Собираем приложение
+RUN npm run build
+
+# 7. Запускаем продакшн-версию в отдельном этапе
+FROM node:22 AS runner
+WORKDIR /app
+
+# 8. Копируем только нужные файлы из предыдущего контейнера
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/prisma ./prisma
+COPY package.json ./
+
+# 9. Устанавливаем переменную окружения для Docker
+ENV NODE_ENV=production
+
+# 10. Устанавливаем зависимость для ожидания загрузки БД
+RUN apt-get update && apt-get install -y wait-for-it

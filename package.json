@@ -1,0 +1,15 @@
+{
+    "name": "monolith",
+    "version": "1.0.0",
+    "description": "project",
+    "license": "ISC",
+    "scripts": {
+        "docker:clear": "docker system prune -af --volumes",
+        "pro-cli": "npm install -D @isatalantbek/pro-cli@latest && npm install -g ./node_modules/@isatalantbek/pro-cli"
+    },
+    "devDependencies": {
+        "@isatalantbek/pro-cli": "^1.0.3",
+        "prettier": "^3.5.1"
+    },
+    "private": true
+}

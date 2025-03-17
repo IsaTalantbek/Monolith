@@ -1,0 +1,11 @@
+{
+    "create-projects-dir": ".",
+    "create-compositions-dir": "docker",
+    "scripts": {},
+    "projects": {
+        "monolith": {
+            "file": "./monolith/pro-config.json",
+            "type": "app"
+        }
+    }
+}

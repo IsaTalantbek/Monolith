@@ -1,0 +1,13 @@
+.gitignore
+.git
+.gitattributes
+
+.env
+.env.development
+.env.production
+
+node_modules
+dist
+
+pro-config.json
+pro-cli.json

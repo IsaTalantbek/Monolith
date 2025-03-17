@@ -1,0 +1,43 @@
+{
+    "name": "monolith",
+    "version": "0.0.1",
+    "description": "Nestjs-test-monolith",
+    "author": "isat",
+    "type": "commonjs",
+    "private": true,
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "nest build",
+        "db:deploy": "npx prisma generate && npx prisma migrate deploy",
+        "start": "nest start",
+        "start:dev": "npm run db:deploy && nest start --watch",
+        "start:dev:full": "nodemon --watch package.json --watch prisma/schema.prisma --exec 'npm run start:dev'",
+        "start:debug": "nest start --debug --watch",
+        "start:prod": "npm run db:deploy && node dist/main"
+    },
+    "dependencies": {
+        "@grpc/grpc-js": "^1.12.6",
+        "@grpc/proto-loader": "^0.7.13",
+        "@isatalantbek/protos": "^1.2.1",
+        "@nestjs/common": "^11.0.11",
+        "@nestjs/config": "^4.0.0",
+        "@nestjs/core": "^11.0.11",
+        "@nestjs/platform-fastify": "^11.0.11",
+        "@nestjs/microservices": "^11.0.11",
+        "@prisma/client": "^6.4.1",
+        "dotenv": "^16.4.7",
+        "prisma": "^6.4.1",
+        "reflect-metadata": "^0.2.2",
+        "rxjs": "^7.8.2"
+    },
+    "devDependencies": {
+        "@nestjs/cli": "^11.0.4",
+        "@nestjs/schematics": "^11.0.1",
+        "@types/node": "^20.3.1",
+        "nodemon": "^3.1.9",
+        "source-map-support": "^0.5.21",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.7.3"
+    }
+}
