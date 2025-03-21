@@ -1,7 +1,16 @@
 {
     "create-projects-dir": ".",
     "create-compositions-dir": "docker",
-    "scripts": {},
+    "scripts": {
+        "r": {
+            "commands": "pro run monolith -p -s",
+            "description": "запуск проекта продакшн"
+        },
+        "r:dev": {
+            "commands": ["pro run monolith -d -s"],
+            "description": "запуск проекта development"
+        }
+    },
     "projects": {
         "monolith": {
             "file": "./monolith/pro-config.json",

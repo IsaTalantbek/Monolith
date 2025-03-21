@@ -1,17 +1,19 @@
 // Можно удалить, это просто для теста
 
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../../core/prisma/prisma.service';
 
 @Injectable()
 export class TestService {
-    constructor(private readonly prisma: PrismaService) {}
+    arr: string[] = []
+
+    constructor() {
+    }
 
     async create(name: string) {
-        return this.prisma.test.create({ data: { name } });
+        return this.arr.push(name)
     }
 
     async give() {
-        return this.prisma.test.findMany();
+        return this.arr
     }
 }

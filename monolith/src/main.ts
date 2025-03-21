@@ -22,14 +22,14 @@ async function bootstrap() {
         })
     );
 
-    const PORT = process.env.monolith_PORT_PJ ? process.env.monolith_PORT_PJ : (() => { throw new Error(`Не поставлен порт в monolith`); })();
+    const PORT = process.env.monolith_PORT_PJ ? process.env.monolith_PORT_PJ : 3000
 
     await app.listen(PORT, '0.0.0.0', (err) => {
         if (err) {
             console.error(err);
             process.exit(1);
         }
-        console.log(`Server listening at port ${PORT}`);
+        console.log(`project starting in ${PORT}`)
     });
 }
 bootstrap();

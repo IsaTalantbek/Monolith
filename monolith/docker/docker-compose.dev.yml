@@ -1,8 +1,8 @@
 services:
     monolith:
         volumes:
-            - ../package.json:/package.json
-            - ../src:/app/src
+         # Вот
+            - ../src:/app/src:delegated
         build:
             context: ..
             dockerfile: ${DOCKER_DIR}/${DEV_DOCKERFILE}

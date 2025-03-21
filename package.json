@@ -8,7 +8,7 @@
         "pro-cli": "npm install -D @isatalantbek/pro-cli@latest && npm install -g ./node_modules/@isatalantbek/pro-cli"
     },
     "devDependencies": {
-        "@isatalantbek/pro-cli": "^1.0.3",
+        "@isatalantbek/pro-cli": "^1.1.2",
         "prettier": "^3.5.1"
     },
     "private": true

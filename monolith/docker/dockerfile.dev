@@ -9,12 +9,11 @@ COPY package*.json ./
 COPY .npmrc ./
 
 # 4. Устанавливаем зависимости
-RUN npm install
+RUN npm ci
 
 # 5. Копируем все файлы в контейнер
 COPY prisma ./prisma
-COPY tsconfig.build.json ./tsconfig.build.json
-COPY tsconfig.json ./tsconfig.json
+COPY tsconfig*.json ./
 
 # 6. Устанавливаем переменную окружения для Docker
 ENV NODE_ENV=development
